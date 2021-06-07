@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>HA project: My order</title>
+    <script>
+    
+    </script>
+    
+    <link rel="stylesheet" href="inc/mystyle.css">
+    <style>
+
+    </style>
+  </head>
+  
+  <body>
+    <div class="pgHeader">
+      <table width="100%">
+        <tr>
+          <td width="50%">
+            <nav><ul>
+              <li><a href="index.html">Login</a></li>
+              <li><a href="orders.html">Orders</a></li>
+              <li><a href="myorder.html">My order</a></li>
+              <li><a href="logout.html">Logout</a></li>
+            </ul></nav>
+          </td>
+          <td width="50%" align="right"><img src="img\logo.jpg" /></td>
+        </tr>
+      </table>
+    </div>
+      
+    <div class="pgContent">
+      <form>
+        <center>
+        <br>
+        <table border="0">
+          <tr>
+            <td colspan="2" align="center">
+              <input type="button" value="Submit order">
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td><input id="dt_order" disabled="1" value="2021/06/01" /></td>
+          </tr>
+          <tr>
+            <td>Order ID</td>
+            <td><input id="id_order" disabled="1" value="" /></td>
+          </tr>
+          <tr>
+            <td>Client</td>
+            <td>
+              <select id="id_client">
+                <option value="*">Select the client ...</option>
+                <option value="cli001">SMITH</option>
+                <option value="cli002">DURAND</option>
+                <option value="cli003">DUPONT</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <br>
+              <!-- List order items to order -->
+              <table border="1">
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Barcode</th>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Size</th>
+                  <th>Qty</th>
+                </tr>
+                
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>4512159301</td>
+                  <td>Vittel</td>
+                  <td>Beverage</td>
+                  <td>Mineral water</td>
+                  <td>1.5 l</td>
+                  <td><input type="numeric" size="3" /></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>4512159302</td>
+                  <td>Coca Cola</td>
+                  <td>Beverage</td>
+                  <td>Mineral water</td>
+                  <td>2 l</td>
+                  <td><input type="numeric" size="3" /></td>
+                </tr>
+                
+              </table>
+            
+            </td>
+          </tr>
+          
+        </table>
+        </center>
+      </form>
+    </div>
+    
+    <div class="pgFooter"><br><br>(c) Copyright 2021 ENOVNOW SAS. All rights reserved.</div>
+    
+  </body>
+</html>
