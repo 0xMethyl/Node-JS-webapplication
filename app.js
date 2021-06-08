@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
-require("./app/routes/client.routes.js")(app);
+// require("./app/routes/client.routes.js")(app); // Database Connection with REST API
 
 // parse requests of content-type: application/json
 app.use(bodyParser.json());
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to webapplication." });
+  res.json({ message: "Welcome to ENOVNOW webapplication." });
 });
 
 // set port, listen for requests
