@@ -2,20 +2,20 @@ module.exports = app => {
     const clients = require("../controllers/client.controller.js");
   
     // Create a new Client
-    app.post("/clients", clients.create);
+    app.post("devapi/CreateClient", clients.create);
   
     // Retrieve all clients
-    app.get("/clients", clients.findAll);
+    app.get("devapi/ShowClients", clients.findAll);
   
     // Retrieve a single Client with ClientId
-    app.get("/clients/:ClientId", clients.findOne);
+    app.get("devapi/FindClient/:ClientId", clients.findOne);
   
     // Update a Client with ClientId
-    app.put("/clients/:ClientId", clients.update);
+    app.put("devapi/UpdateClient/:ClientId", clients.update);
   
     // Delete a Client with ClientId
-    app.delete("/clients/:ClientId", clients.delete);
+    app.delete("devapi/DeleteClient/:ClientId", clients.delete);
   
-    // Create a new Client
-    app.delete("/clients", clients.deleteAll);
+    // Delete all Clients
+    app.delete("devapi/Deleteclients", clients.deleteAll);
   };
