@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
-// require("./app/routes/client.routes.js")(app); // Database Connection with REST API
+require("./app/routes/client.routes.js")(app); // Database Connection, routes, and REST API (db.js not linked !)
 
 // parse requests of content-type: application/json
 app.use(bodyParser.json());
