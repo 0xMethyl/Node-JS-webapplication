@@ -21,28 +21,28 @@ module.exports = app => {
     app.delete("devapi/Deleteclients", clients.deleteAll);
     */
 
-    app.post('/devapi/CreateClient', function(req, res) {
-      res.send('Create client route');
+    app.post("/devapi/CreateClient", (req, res) => {
+      res.json({ message: "Create client route" });
     });
 
-    app.get('/devapi/ShowClients', function(req, res) {
-      res.send('Show clients route');
+    app.get("/devapi/ShowClients", (req, res) => {
+      res.json({ message: "Show clients route" });
     });
 
-    app.get('/devapi/FindClient/:id', function(req, res) {
-      res.send('Find client route with id : ' + req.params.id);
+    app.get('/devapi/FindClient/:id', (req, res) => {
+      res.json({ message: 'Find client route with id : ' + req.params.id});
     });
 
-    app.put('/devapi/UpdateClient/:id', function(req, res) {
-      res.send('Update client route with id : ' + req.params.id);
+    app.put('/devapi/UpdateClient/:id', (req, res) => {
+      res.json({ message: 'Update client route with id : ' + req.params.id});
     });
 
-    app.delete('/devapi/DeleteClient/:id', function(req, res) {
-      res.send('Delete client route with id : ' + req.params.id);
+    app.delete('/devapi/DeleteClient/:id', (req, res) => {
+      res.json({ message: 'Delete client route with id : ' + req.params.id});
     });
 
-    app.get('/devapi/ShowClients', function(req, res) {
-      res.send('Delete clients route');
+    app.get('/devapi/ShowClients', (req, res) => {
+      res.json({ message: 'Delete clients route'});
     });
 
   };
