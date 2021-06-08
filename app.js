@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
-require("./app/routes/customer.routes.js")(app);
+require("./app/routes/client.routes.js")(app);
 
 // parse requests of content-type: application/json
 app.use(bodyParser.json());
