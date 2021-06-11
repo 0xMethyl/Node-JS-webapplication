@@ -8,7 +8,7 @@ const Client = function(Client) {
 };
 
 Client.create = (newClient, result) => {
-  sql.query("INSERT INTO clients SET ?", newClient, (err, res) => {
+  sql.query("INSERT INTO client SET ?", newClient, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -21,7 +21,7 @@ Client.create = (newClient, result) => {
 };
 
 Client.findById = (ClientId, result) => {
-  sql.query(`SELECT * FROM clients WHERE id = ${ClientId}`, (err, res) => {
+  sql.query(`SELECT * FROM client WHERE id = ${ClientId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -54,7 +54,7 @@ Client.getAll = result => {
 
 Client.updateById = (id, Client, result) => {
   sql.query(
-    "UPDATE clients SET email = ?, name = ?, active = ? WHERE id = ?",
+    "UPDATE client SET email = ?, name = ?, active = ? WHERE id = ?",
     [Client.email, Client.name, Client.active, id],
     (err, res) => {
       if (err) {
@@ -76,7 +76,7 @@ Client.updateById = (id, Client, result) => {
 };
 
 Client.remove = (id, result) => {
-  sql.query("DELETE FROM clients WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM client WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -95,14 +95,14 @@ Client.remove = (id, result) => {
 };
 
 Client.removeAll = result => {
-  sql.query("DELETE FROM clients", (err, res) => {
+  sql.query("DELETE FROM client", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} clients`);
+    console.log(`deleted ${res.affectedRows} client`);
     result(null, res);
   });
 };
