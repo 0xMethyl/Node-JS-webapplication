@@ -1,7 +1,7 @@
 module.exports = app => {
     const clients = require("../controllers/client.controller.js");
     
-    /*
+    
     // Create a new Client
     app.post("devapi/CreateClient", clients.create);
   
@@ -19,8 +19,21 @@ module.exports = app => {
   
     // Delete all Clients
     app.delete("devapi/Deleteclients", clients.deleteAll);
-    */
 
+    // Get Version Routes
+
+    var d = Date()
+
+    app.get("/devapi/GetVersion", (req, res) => {
+      res.json({ message: "Version 1.0 of webservice, " + d});
+    });
+
+    app.post("/devapi/GetVersion", (req, res) => {
+      res.json({ message: "Version 1.0 of webservice, " + d});
+    });
+
+    // REST API Routes
+    /*
     app.post("/devapi/CreateClient", (req, res) => {
       res.json({ message: "Create client route" });
     });
@@ -40,9 +53,5 @@ module.exports = app => {
     app.delete('/devapi/DeleteClient/:id', (req, res) => {
       res.json({ message: 'Delete client route with id : ' + req.params.id});
     });
-
-    app.get('/devapi/ShowClients', (req, res) => {
-      res.json({ message: 'Delete clients route'});
-    });
-
+    */
   };
