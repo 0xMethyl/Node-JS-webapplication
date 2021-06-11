@@ -2,9 +2,8 @@ const sql = require("./db.js");
 
 // constructor
 const Client = function(Client) {
-  this.email = Client.email;
   this.name = Client.name;
-  this.active = Client.active;
+  this.user_psw = Client.user_psw;
 };
 
 Client.create = (newClient, result) => {
@@ -54,8 +53,8 @@ Client.getAll = result => {
 
 Client.updateById = (id, Client, result) => {
   sql.query(
-    "UPDATE client SET email = ?, name = ?, active = ? WHERE id = ?",
-    [Client.email, Client.name, Client.active, id],
+    "UPDATE client SET name = ?, user_psw = ? WHERE id = ?",
+    [Client.name, Client.user_psw, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
