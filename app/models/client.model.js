@@ -40,7 +40,7 @@ Client.findById = (ClientId, result) => {
 };
 
 Client.getAll = result => {
-  sql.query("SELECT * FROM clients", (err, res) => {
+  sql.query("SELECT * FROM client", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
