@@ -3,5 +3,5 @@ module.exports = {
   USER: "", 
   PASSWORD: "",
   DB: "",
-  PORT : 20336
+  PORT : 3306
 };
