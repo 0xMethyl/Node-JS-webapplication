@@ -3,22 +3,52 @@ module.exports = app => {
     
     
     // Create a new Client
-    app.post("devapi/CreateClient", clients.create);
+    app.post("devapi/CreateClient", (req, res) => { 
+      connection.query("SELECT * FROM client", function (err, result, fields){
+        if (err) throw err;
+        res.json(result);
+      });
+    });
   
     // Retrieve all clients
-    app.get("devapi/ShowClients", clients.findAll);
+    app.get("devapi/ShowClients", (req, res) => { 
+      connection.query("SELECT * FROM client", function (err, result, fields){
+        if (err) throw err;
+        res.json(result);
+      });
+    });
   
     // Retrieve a single Client with ClientId
-    app.get("devapi/FindClient/:id", clients.findOne);
+    app.get("devapi/FindClient/:id", (req, res) => { 
+      connection.query("SELECT * FROM client WHERE id_client = " + req.params.id, function (err, result, fields){
+        if (err) throw err;
+        res.json(result);
+      });
+    });
   
     // Update a Client with ClientId
-    app.put("devapi/UpdateClient/:id", clients.update);
+    app.put("devapi/UpdateClient/:id/:name/:user_psw", (req, res) => { 
+      connection.query("UPDATE client SET name = " + req.params.name + "," + "user_psw = " + req.params.user_psw + " WHERE id_client = " + req.params.id, function (err, result, fields){
+        if (err) throw err;
+        res.json(result);
+      });
+    });
   
     // Delete a Client with ClientId
-    app.delete("devapi/DeleteClient/:id", clients.delete);
+    app.delete("devapi/DeleteClient/:id", (req, res) => { 
+      connection.query("DELETE * FROM client WHERE id_client = " + req.params.id, function (err, result, fields){
+        if (err) throw err;
+        res.json(result);
+      });
+    });
   
     // Delete all Clients
-    app.delete("devapi/Deleteclients", clients.deleteAll);
+    app.delete("devapi/DeleteClients", (req, res) => { 
+      connection.query("DELETE * FROM client", function (err, result, fields){
+        if (err) throw err;
+        res.json(result);
+      });
+    });
 
     // Get Version Routes
 
@@ -31,27 +61,4 @@ module.exports = app => {
     app.post("/devapi/GetVersion", (req, res) => {
       res.json({ message: "Version 1.0 of webservice, " + d});
     });
-
-    // REST API Routes
-    /*
-    app.post("/devapi/CreateClient", (req, res) => {
-      res.json({ message: "Create client route" });
-    });
-
-    app.get("/devapi/ShowClients", (req, res) => {
-      res.json({ message: "Show clients route" });
-    });
-
-    app.get('/devapi/FindClient/:id', (req, res) => {
-      res.json({ message: 'Find client route with id : ' + req.params.id});
-    });
-
-    app.put('/devapi/UpdateClient/:id', (req, res) => {
-      res.json({ message: 'Update client route with id : ' + req.params.id});
-    });
-
-    app.delete('/devapi/DeleteClient/:id', (req, res) => {
-      res.json({ message: 'Delete client route with id : ' + req.params.id});
-    });
-    */
   };
