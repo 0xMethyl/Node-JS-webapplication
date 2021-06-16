@@ -14,16 +14,13 @@ exports.create = (req, res) => {
       name: req.body.name,
       user_psw: req.body.user_psw,
     });
-  
-    // Save Client in the database
-    Client.create(Client, (err, data) => {
-      if (err)
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Client."
-        });
-      else res.send(data);
+
+    // Create a Order
+    const Order = new Order({
+      name: req.body.name,
+      user_psw: req.body.user_psw,
     });
+
   };
 
 // Retrieve all clients from the database.
@@ -38,22 +35,17 @@ exports.findAll = (req, res) => {
   });
 };
 
-// Find a single Client with a ClientId
-exports.findOne = (req, res) => {
-    Client.findById(req.params.ClientId, (err, data) => {
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found Client with id ${req.params.ClientId}.`
-          });
-        } else {
-          res.status(500).send({
-            message: "Error retrieving Client with id " + req.params.ClientId
-          });
-        }
-      } else res.send(data);
-    });
-  };
+// Retrieve all Orders from the database.
+exports.findAll = (req, res) => {
+  Order.getAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Clients."
+      });
+    else res.send(data);
+  });
+};
 
 // Update a Client identified by the ClientId in the request
 exports.update = (req, res) => {
@@ -112,4 +104,4 @@ exports.deleteAll = (req, res) => {
         });
       else res.send({ message: `All Clients were deleted successfully!` });
     });
-  };
+}
