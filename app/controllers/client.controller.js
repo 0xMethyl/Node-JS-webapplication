@@ -27,7 +27,7 @@ exports.create = (req, res) => {
   };
 
 // Retrieve all clients from the database.
-exports.findAll = (req, res) => {
+exports.findAllClients = (req, res) => {
   Client.getAll((err, data) => {
     if (err)
       res.status(500).send({
@@ -39,7 +39,7 @@ exports.findAll = (req, res) => {
 };
 
 // Retrieve all Orders from the database.
-exports.findAll = (req, res) => {
+exports.findAllOrders = (req, res) => {
   Order.getAll((err, data) => {
     if (err)
       res.status(500).send({
