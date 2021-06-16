@@ -15,7 +15,7 @@ const Order = function(Order) {
 };
 
 
-Client.getAllClients = result => {
+Client.findAllClients = result => {
   sql.query("SELECT * FROM client", (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -28,7 +28,7 @@ Client.getAllClients = result => {
   });
 };
 
-Order.getAllOrders = result => {
+Order.findAllOrders = result => {
   sql.query("SELECT * FROM orders", (err, res) => {
     if (err) {
       console.log("error: ", err);
