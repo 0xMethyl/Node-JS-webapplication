@@ -6,6 +6,39 @@ const Client = function(Client) {
   this.user_psw = Client.user_psw;
 };
 
+const Order = function(Order) {
+  this.name = Order.name;
+  this.user_psw = Order.user_psw;
+};
+
+
+Client.getAll = result => {
+  sql.query("SELECT * FROM client", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("clients: ", res);
+    result(null, res);
+  });
+};
+
+Order.getAll = result => {
+  sql.query("SELECT * FROM orders", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("clients: ", res);
+    result(null, res);
+  });
+};
+
+/*
 Client.create = (newClient, result) => {
   sql.query("INSERT INTO client SET ?", newClient, (err, res) => {
     if (err) {
@@ -20,7 +53,7 @@ Client.create = (newClient, result) => {
 };
 
 Client.findById = (ClientId, result) => {
-  sql.query(`SELECT * FROM client WHERE id = ${ClientId}`, (err, res) => {
+  sql.query(`SELECT * FROM client WHERE id_client = ${ClientId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -37,19 +70,7 @@ Client.findById = (ClientId, result) => {
     result({ kind: "not_found" }, null);
   });
 };
-
-Client.getAll = result => {
-  sql.query("SELECT * FROM client", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("clients: ", res);
-    result(null, res);
-  });
-};
+*/
 
 Client.updateById = (id, Client, result) => {
   sql.query(
@@ -68,14 +89,15 @@ Client.updateById = (id, Client, result) => {
         return;
       }
 
-      console.log("updated Client: ", { id: id, ...Client });
+      
+      console.log("Updated Client: ", { id: id, ...Client });
       result(null, { id: id, ...Client });
     }
   );
 };
 
 Client.remove = (id, result) => {
-  sql.query("DELETE FROM client WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM client WHERE id_client = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -88,7 +110,7 @@ Client.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted Client with id: ", id);
+    console.log("Deleted Client with id: ", id);
     result(null, res);
   });
 };
@@ -101,7 +123,7 @@ Client.removeAll = result => {
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} client`);
+    console.log(`Deleted ${res.affectedRows} clients`);
     result(null, res);
   });
 };
