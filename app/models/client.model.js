@@ -7,8 +7,11 @@ const Client = function(Client) {
 };
 
 const Order = function(Order) {
-  this.name = Order.name;
-  this.user_psw = Order.user_psw;
+  this.id_order= Order.id_order;
+  this.id_client = Order.id_client;
+  this.dt_order = Order.dt_order;
+  this.dt_delivery = Order.dt_delivery;
+  this.nb_items = Order.nb_items;
 };
 
 
