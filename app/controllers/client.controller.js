@@ -17,8 +17,11 @@ exports.create = (req, res) => {
 
     // Create a Order
     const Order = new Order({
-      name: req.body.name,
-      user_psw: req.body.user_psw,
+      id_order: req.body.id_order,
+      id_client: req.body.id_client,
+      dt_order: req.body.dt_order,
+      dt_delivery: req.body.dt_delivery,
+      nb_items: req.body.nb_items
     });
 
   };
