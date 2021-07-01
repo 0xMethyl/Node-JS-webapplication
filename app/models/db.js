@@ -3,6 +3,7 @@ const dbConfig = require("../../config/db.config.js");
 
 // Create a connection to the database
 const connection = mysql.createConnection({
+  multipleStatements: true,
   host: dbConfig.HOST,
   user: dbConfig.USER,
   password: dbConfig.PASSWORD,
