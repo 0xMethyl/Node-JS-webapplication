@@ -38,8 +38,8 @@
     });
 
     app.get("/devapi/ShowClients", (req, res) => {
-      res.json({ message: "Show clients route" });
-    });
+    }, Client.getAll
+    );
 
     app.get('/devapi/FindClient/:id', (req, res, next) => {
       var id = req.params.id;
@@ -70,15 +70,6 @@
     },
     Client.addOrders
     );
-
-    app.get('/test', (req, res, next) => {
-      var a = req.query.a;
-      var b = req.query.b;
-
-      console.log("parametre a = " + req.query.a);
-      console.log("parametre b = " + req.query.b);
-    })
-    
 
     
     app.put('/devapi/UpdateClient/:id', (req, res) => {
